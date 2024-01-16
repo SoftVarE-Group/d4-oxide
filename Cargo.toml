@@ -1,6 +1,6 @@
 [package]
 name = "d4-oxide"
-version = "0.2.0"
+version = "0.2.1"
 description = "A Rust wrapper around d4."
 edition = "2021"
 build = "build.rs"
@@ -11,7 +11,7 @@ homepage = "https://github.com/SoftVarE-Group/d4-oxide"
 repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
 
 [dependencies]
-cxx = "1.0"
+cxx = { version = "1.0", features = ["c++17"] }
 mt-kahypar-sys = "0.1"
 gmp-mpfr-sys = { version = "1.6", default-features = false }
 

@@ -15,7 +15,6 @@ fn main() {
     // Setup include paths for compilation.
     let mut includes = vec![
         "include".to_string(),
-        "d4/include".to_string(),
         "d4/src".to_string(),
         "d4".to_string(),
     ];

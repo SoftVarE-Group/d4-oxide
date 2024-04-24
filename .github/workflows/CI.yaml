@@ -38,10 +38,11 @@ jobs:
         run: |
           cd $(mktemp -d)
           git clone --recursive https://github.com/kahypar/mt-kahypar.git .
-          git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
           cmake -B build -D CMAKE_INSTALL_PREFIX=$MTKAHYPAR_DIR -D MT_KAHYPAR_DISABLE_BOOST=true
           cmake --build build --target mtkahypar
           cmake --install build
+# TODO: currently, the newest version of Mt-KaHyPar ist ot released, move below clone to check out latest version when released.
+#          git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
       - name: Lint
         run: cargo clippy -- --deny warnings
 
@@ -63,9 +64,10 @@ jobs:
         run: |
           cd $(mktemp -d)
           git clone --recursive https://github.com/kahypar/mt-kahypar.git .
-          git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
-          cmake -B build -D CMAKE_INSTALL_PREFIX=$MTKAHYPAR_DIR
+          cmake -B build -D CMAKE_INSTALL_PREFIX=$MTKAHYPAR_DIR -D MT_KAHYPAR_DISABLE_BOOST=true
           cmake --build build --target mtkahypar
           cmake --install build
+# TODO: currently, the newest version of Mt-KaHyPar ist ot released, move below clone to check out latest version when released.
+#          git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
       - name: Build
         run: cargo build

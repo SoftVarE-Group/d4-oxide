@@ -38,7 +38,6 @@ fn main() {
 
     // Find and link the C++ interface of GMP.
     let gmpxx_library = pkg_config::Config::new()
-        .statik(true)
         .probe("gmpxx")
         .expect("Failed to find GMP C++ library.");
 
@@ -46,7 +45,7 @@ fn main() {
         println!("cargo:rustc-link-search={}", path.display());
     }
 
-    println!("cargo:rustc-link-lib=static=gmpxx");
+    println!("cargo:rustc-link-lib=dylib=gmpxx");
 
     // Link Mt-KaHyPar.
     println!("cargo:rustc-link-lib=dylib=mtkahypar");

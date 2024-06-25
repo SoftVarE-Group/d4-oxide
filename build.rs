@@ -12,21 +12,12 @@ fn main() {
         println!("cargo:rustc-link-search={}", path.display());
     }
 
-    // Find and link the C++ interface of GMP.
-    let gmpxx_library = pkg_config::Config::new()
-        .probe("gmpxx")
-        .expect("Failed to find GMP C++ library.");
-
-    for path in gmpxx_library.link_paths {
-        println!("cargo:rustc-link-search={}", path.display());
-    }
-
     // Find d4 sources to build.
     let d4_sources: Vec<PathBuf> = glob("d4/src/**/*.cpp")
         .expect("Failed to create glob pattern for d4 sources.")
         .map(|result| result.expect("Failed to find d4 source file."))
         .filter(|path| !path.ends_with("Main.cpp"))
-        .filter(|path| !path.ends_with("DdnnfCompilerRunnable.cpp"))
+        .filter(|path| !path.ends_with("ConfigConverter.cpp"))
         .filter(|path| !path.ends_with("WrapperGlucose.cpp"))
         .collect();
 
@@ -52,7 +43,6 @@ fn main() {
         .compile("d4");
 
     println!("cargo:rustc-link-lib=dylib=gmp");
-    println!("cargo:rustc-link-lib=dylib=gmpxx");
 
     // Link Mt-KaHyPar.
     println!("cargo:rustc-link-lib=dylib=mtkahypar");

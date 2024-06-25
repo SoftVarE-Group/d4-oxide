@@ -3,6 +3,24 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
+    // Find and link GMP.
+    let gmp_library = pkg_config::Config::new()
+        .probe("gmp")
+        .expect("Failed to find GMP library.");
+
+    for path in gmp_library.link_paths {
+        println!("cargo:rustc-link-search={}", path.display());
+    }
+
+    // Find and link the C++ interface of GMP.
+    let gmpxx_library = pkg_config::Config::new()
+        .probe("gmpxx")
+        .expect("Failed to find GMP C++ library.");
+
+    for path in gmpxx_library.link_paths {
+        println!("cargo:rustc-link-search={}", path.display());
+    }
+
     // Find d4 sources to build.
     let d4_sources: Vec<PathBuf> = glob("d4/src/**/*.cpp")
         .expect("Failed to create glob pattern for d4 sources.")
@@ -33,18 +51,7 @@ fn main() {
         .define("D4_PREPORC_SOLVER", "minisat")
         .compile("d4");
 
-    // FIXME: Currently, `gmp-mpfr-sys` does not build the C++ interface. Once it does, GMPXX could be used from it.
-    // println!("cargo:rustc-link-search={}", env::var("DEP_GMP_OUT_DIR").expect("GMP library directory not passed."));
-
-    // Find and link the C++ interface of GMP.
-    let gmpxx_library = pkg_config::Config::new()
-        .probe("gmpxx")
-        .expect("Failed to find GMP C++ library.");
-
-    for path in gmpxx_library.link_paths {
-        println!("cargo:rustc-link-search={}", path.display());
-    }
-
+    println!("cargo:rustc-link-lib=dylib=gmp");
     println!("cargo:rustc-link-lib=dylib=gmpxx");
 
     // Link Mt-KaHyPar.

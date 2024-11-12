@@ -2,6 +2,20 @@ use glob::glob;
 use std::env;
 use std::path::PathBuf;
 
+static DYNAMIC_DEPENDENCIES: &'static [&str] = &["mtkahypar"];
+
+static STATIC_DEPENDENCIES: &'static [&str] = &[
+    "arjun",
+    "cadiback",
+    "cadical",
+    "cryptominisat5",
+    "glucose",
+    "gmp",
+    "gmpxx",
+    "gpmc",
+    "sbva",
+];
+
 fn main() {
     // Find and link GMP.
     let gmp_library = pkg_config::Config::new()
@@ -24,17 +38,30 @@ fn main() {
     // Setup include paths for compilation.
     let mut includes = vec![
         "include".to_string(),
-        "d4/src".to_string(),
         "d4".to_string(),
+        "d4/3rdParty/glucose-3.0".to_string(),
+        "d4/src".to_string(),
     ];
 
-    // Optionally add Mt-KaHyPar include path.
-    if let Ok(mtkahypar_include) = env::var("DEP_MTKAHYPAR_INCLUDE_DIR") {
-        includes.push(mtkahypar_include.clone());
-    }
+    // Collect include and lib dirs of dependencies.
+    DYNAMIC_DEPENDENCIES
+        .iter()
+        .chain(STATIC_DEPENDENCIES.iter())
+        .for_each(|dependency| {
+            if let Ok(include_dir) = env::var(format!("{}_INCLUDE_DIR", dependency.to_uppercase()))
+            {
+                includes.push(include_dir.clone());
+            }
+
+            if let Ok(lib_dir) = env::var(format!("{}_LIB_DIR", dependency.to_uppercase()))
+            {
+                println!("cargo::rustc-link-search=native={lib_dir}");
+            }
+        });
 
     // Build d4.
     cxx_build::bridge("src/lib.rs")
+        .std("c++20")
         .includes(includes)
         .file("src/Adapter.cc")
         .files(d4_sources)
@@ -42,8 +69,12 @@ fn main() {
         .define("D4_PREPORC_SOLVER", "minisat")
         .compile("d4");
 
-    println!("cargo:rustc-link-lib=dylib=gmp");
+    // Link all dependencies.
+    DYNAMIC_DEPENDENCIES
+        .iter()
+        .for_each(|dependency| println!("cargo::rustc-link-lib=dylib={dependency}"));
 
-    // Link Mt-KaHyPar.
-    println!("cargo:rustc-link-lib=dylib=mtkahypar");
+    STATIC_DEPENDENCIES
+        .iter()
+        .for_each(|dependency| println!("cargo::rustc-link-lib=static={dependency}"));
 }

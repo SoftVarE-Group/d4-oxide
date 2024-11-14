@@ -2,22 +2,8 @@ use glob::glob;
 use std::env;
 use std::path::PathBuf;
 
-static DYNAMIC_DEPENDENCIES: &'static [&str] = &["mtkahypar"];
-
-static STATIC_DEPENDENCIES: &'static [&str] = &[
-    "arjun",
-    "cadiback",
-    "cadical",
-    "cryptominisat5",
-    "glucose",
-    "gmp",
-    "gmpxx",
-    "gpmc",
-    "sbva",
-];
-
 fn main() {
-    // Find and link GMP.
+    // Find GMP as the C++ bindings are not built by the corresponding crate yet.
     let gmp_library = pkg_config::Config::new()
         .probe("gmp")
         .expect("Failed to find GMP library.");
@@ -43,21 +29,20 @@ fn main() {
         "d4/src".to_string(),
     ];
 
-    // Collect include and lib dirs of dependencies.
-    DYNAMIC_DEPENDENCIES
-        .iter()
-        .chain(STATIC_DEPENDENCIES.iter())
-        .for_each(|dependency| {
-            if let Ok(include_dir) = env::var(format!("{}_INCLUDE_DIR", dependency.to_uppercase()))
-            {
-                includes.push(include_dir.clone());
-            }
+    // Collect include and lib dirs of Mt-KaHyPar.
+    if let Ok(root) = env::var("MTKAHYPAR_ROOT") {
+        includes.push(format!("{}/include", root.clone()));
+        println!("cargo::rustc-link-search=native={root}/lib");
+        println!("cargo::rustc-link-search=native={root}/lib64");
+    }
 
-            if let Ok(lib_dir) = env::var(format!("{}_LIB_DIR", dependency.to_uppercase()))
-            {
-                println!("cargo::rustc-link-search=native={lib_dir}");
-            }
-        });
+    if let Ok(include_dir) = env::var("MTKAHYPAR_INCLUDE_DIR") {
+        includes.push(include_dir.clone());
+    }
+
+    if let Ok(lib_dir) = env::var("MTKAHYPAR_LIB_DIR") {
+        println!("cargo::rustc-link-search=native={lib_dir}");
+    }
 
     // Build d4.
     cxx_build::bridge("src/lib.rs")
@@ -69,12 +54,16 @@ fn main() {
         .define("D4_PREPORC_SOLVER", "minisat")
         .compile("d4");
 
-    // Link all dependencies.
-    DYNAMIC_DEPENDENCIES
-        .iter()
-        .for_each(|dependency| println!("cargo::rustc-link-lib=dylib={dependency}"));
+    // Link Mt-KaHyPar.
+    println!("cargo::rustc-link-lib=dylib=mtkahypar");
 
-    STATIC_DEPENDENCIES
-        .iter()
-        .for_each(|dependency| println!("cargo::rustc-link-lib=static={dependency}"));
+    // Link all other dependencies statically.
+    println!("cargo::rustc-link-lib=static=arjun");
+    println!("cargo::rustc-link-lib=static=cadiback");
+    println!("cargo::rustc-link-lib=static=cadical");
+    println!("cargo::rustc-link-lib=static=cryptominisat5");
+    println!("cargo::rustc-link-lib=static=glucose");
+    println!("cargo::rustc-link-lib=static=gmpxx");
+    println!("cargo::rustc-link-lib=static=gpmc");
+    println!("cargo::rustc-link-lib=static=sbva");
 }

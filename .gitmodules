@@ -1,3 +1,18 @@
 [submodule "d4"]
 	path = d4
 	url = https://github.com/SoftVarE-Group/d4v2.git
+[submodule "d4-cadical-sys/cadical"]
+	path = d4-cadical-sys/cadical
+	url = https://github.com/uulm-janbaudisch/cadical.git
+[submodule "d4-cadiback-sys/cadiback"]
+	path = d4-cadiback-sys/cadiback
+	url = https://github.com/uulm-janbaudisch/cadiback.git
+[submodule "d4-sbva-sys/sbva"]
+	path = d4-sbva-sys/sbva
+	url = https://github.com/uulm-janbaudisch/SBVA.git
+[submodule "d4-cryptominisat-sys/cryptominisat"]
+	path = d4-cryptominisat-sys/cryptominisat
+	url = https://github.com/uulm-janbaudisch/cryptominisat.git
+[submodule "d4-arjun-sys/arjun"]
+	path = d4-arjun-sys/arjun
+	url = https://github.com/uulm-janbaudisch/arjun.git

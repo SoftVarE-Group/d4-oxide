@@ -38,6 +38,7 @@ jobs:
         run: |
           cd $(mktemp -d)
           git clone --recursive https://github.com/kahypar/mt-kahypar.git .
+          git checkout 39e06c755cb909387a66eed24ee385ba5ad393d4
           cmake -B build -D CMAKE_INSTALL_PREFIX=$MTKAHYPAR_DIR -D MT_KAHYPAR_DISABLE_BOOST=true
           cmake --build build --target mtkahypar
           cmake --install build
@@ -64,6 +65,7 @@ jobs:
         run: |
           cd $(mktemp -d)
           git clone --recursive https://github.com/kahypar/mt-kahypar.git .
+          git checkout 39e06c755cb909387a66eed24ee385ba5ad393d4
           cmake -B build -D CMAKE_INSTALL_PREFIX=$MTKAHYPAR_DIR -D MT_KAHYPAR_DISABLE_BOOST=true
           cmake --build build --target mtkahypar
           cmake --install build

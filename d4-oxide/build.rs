@@ -27,6 +27,10 @@ fn main() {
         "d4".to_string(),
         "d4/3rdParty/glucose-3.0".to_string(),
         "d4/src".to_string(),
+        env::var("DEP_ARJUN_INCLUDE").unwrap(),
+        env::var("DEP_CRYPTOMINISAT5_INCLUDE").unwrap(),
+        env::var("DEP_GPMC_INCLUDE").unwrap(),
+        env::var("DEP_GMP_INCLUDE_DIR").unwrap(),
     ];
 
     // Collect include and lib dirs of Mt-KaHyPar.

@@ -14,6 +14,8 @@ d4-oxide = "0.2"
 ## Requirements
 
 - [Mt-KaHyPar][mtkahypar]
+- [GMP][gmp] (with C++ bindings)
 
 [d4]: https://github.com/crillab/d4v2
 [mtkahypar]: https://github.com/kahypar/mt-kahypar
+[gmp]: https://gmplib.org

@@ -12,13 +12,13 @@ repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
 
 [dependencies]
 cxx = { version = "1.0", features = ["c++20"] }
-d4-arjun-sys = { version = "0.1.0", path = "../d4-arjun-sys" }
-d4-cadiback-sys = { version = "0.1.0", path = "../d4-cadiback-sys" }
-d4-cadical-sys = { version = "0.1.0", path = "../d4-cadical-sys" }
-d4-cryptominisat-sys = { version = "0.1.0", path = "../d4-cryptominisat-sys" }
-d4-glucose-sys = { version = "0.1.0", path = "../d4-glucose-sys" }
-d4-gpmc-sys = { version = "0.1.0", path = "../d4-gpmc-sys" }
-d4-sbva-sys = { version = "0.1.0", path = "../d4-sbva-sys" }
+d4-arjun-sys = { version = "0.1", path = "../d4-arjun-sys" }
+d4-cadiback-sys = { version = "0.1", path = "../d4-cadiback-sys" }
+d4-cadical-sys = { version = "0.1", path = "../d4-cadical-sys" }
+d4-cryptominisat-sys = { version = "0.1", path = "../d4-cryptominisat-sys" }
+d4-glucose-sys = { version = "0.1", path = "../d4-glucose-sys" }
+d4-gpmc-sys = { version = "0.1", path = "../d4-gpmc-sys" }
+d4-sbva-sys = { version = "0.1", path = "../d4-sbva-sys" }
 gmp-mpfr-sys = "1.6"
 
 [build-dependencies]

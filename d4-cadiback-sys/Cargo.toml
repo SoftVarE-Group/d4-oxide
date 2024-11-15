@@ -11,5 +11,8 @@ readme = "../README.md"
 homepage = "https://github.com/SoftVarE-Group/d4-oxide"
 repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
 
+[dependencies]
+d4-cadical-sys = { version = "0.1", path = "../d4-cadical-sys" }
+
 [build-dependencies]
 cmake = "0.1"

@@ -6,6 +6,14 @@ fn main() {
         .define("BINARY", "OFF")
         .define("CMAKE_PREFIX_PATH", env::var("DEP_CADIBACK_ROOT").unwrap())
         .define("CMAKE_PREFIX_PATH", env::var("DEP_CADICAL_ROOT").unwrap())
+        .env(
+            "CADIBACK_LIB_DIR",
+            format!("{}/lib", env::var("DEP_CADIBACK_ROOT").unwrap()),
+        )
+        .env(
+            "CADICAL_LIB_DIR",
+            format!("{}/lib", env::var("DEP_CADICAL_ROOT").unwrap()),
+        )
         .define(
             "CMAKE_INCLUDE_PATH",
             env::var("DEP_CADIBACK_INCLUDE").unwrap(),

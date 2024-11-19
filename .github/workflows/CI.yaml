@@ -33,13 +33,13 @@ jobs:
         uses: mozilla-actions/sccache-action@v0.0.6
       - name: Setup environment
         run: |
-          echo MTKAHYPAR_DIR=$(mktemp -d) >> $GITHUB_ENV
+          echo MTKAHYPAR_ROOT=$(mktemp -d) >> $GITHUB_ENV
       - name: Build Mt-KaHyPar
         run: |
           cd $(mktemp -d)
           git clone --recursive https://github.com/kahypar/mt-kahypar.git .
           git checkout 39e06c755cb909387a66eed24ee385ba5ad393d4
-          cmake -B build -D CMAKE_INSTALL_PREFIX=$MTKAHYPAR_DIR -D MT_KAHYPAR_DISABLE_BOOST=true
+          cmake -B build -D CMAKE_INSTALL_PREFIX=$MTKAHYPAR_ROOT -D MT_KAHYPAR_DISABLE_BOOST=true
           cmake --build build --target mtkahypar
           cmake --install build
 # TODO: currently, the newest version of Mt-KaHyPar ist ot released, move below clone to check out latest version when released.
@@ -60,13 +60,13 @@ jobs:
         uses: mozilla-actions/sccache-action@v0.0.6
       - name: Setup environment
         run: |
-          echo MTKAHYPAR_DIR=$(mktemp -d) >> $GITHUB_ENV
+          echo MTKAHYPAR_ROOT=$(mktemp -d) >> $GITHUB_ENV
       - name: Build Mt-KaHyPar
         run: |
           cd $(mktemp -d)
           git clone --recursive https://github.com/kahypar/mt-kahypar.git .
           git checkout 39e06c755cb909387a66eed24ee385ba5ad393d4
-          cmake -B build -D CMAKE_INSTALL_PREFIX=$MTKAHYPAR_DIR -D MT_KAHYPAR_DISABLE_BOOST=true
+          cmake -B build -D CMAKE_INSTALL_PREFIX=$MTKAHYPAR_ROOT -D MT_KAHYPAR_DISABLE_BOOST=true
           cmake --build build --target mtkahypar
           cmake --install build
 # TODO: currently, the newest version of Mt-KaHyPar ist ot released, move below clone to check out latest version when released.

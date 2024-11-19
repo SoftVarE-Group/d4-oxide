@@ -1,23 +1,13 @@
-[package]
-name = "d4-oxide"
-version = "0.4.2"
-description = "A Rust wrapper around d4."
-edition = "2021"
-build = "build.rs"
-license = "LGPL-3.0-or-later"
-authors = ["Jan Baudisch <jan.baudisch@uni-ulm.de>"]
-readme = "README.md"
-homepage = "https://github.com/SoftVarE-Group/d4-oxide"
-repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
+[workspace]
+members = [
+    "d4-arjun-sys",
+    "d4-cadiback-sys",
+    "d4-cadical-sys",
+    "d4-cryptominisat-sys",
+    "d4-glucose-sys",
+    "d4-gpmc-sys",
+    "d4-oxide",
+    "d4-sbva-sys",
+]
 
-[dependencies]
-cxx = { version = "1.0", features = ["c++17"] }
-mt-kahypar-sys = "0.1"
-
-[build-dependencies]
-cxx-build = { version = "1.0", features = ["parallel"] }
-glob = "0.3"
-pkg-config = "0.3"
-
-[dev-dependencies]
-clap = { version = "4.5", features = ["derive"] }
+resolver = "2"

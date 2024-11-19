@@ -1,0 +1,18 @@
+[package]
+name = "d4-cadiback-sys"
+version = "0.1.1"
+description = "A Rust wrapper around CaDiBack for d4."
+edition = "2021"
+build = "build.rs"
+links = "cadiback"
+license = "MIT"
+authors = ["Jan Baudisch <jan.baudisch@uni-ulm.de>"]
+readme = "../README.md"
+homepage = "https://github.com/SoftVarE-Group/d4-oxide"
+repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
+
+[dependencies]
+d4-cadical-sys = { version = "0.1", path = "../d4-cadical-sys" }
+
+[build-dependencies]
+cmake = "0.1"

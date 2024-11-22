@@ -6,15 +6,25 @@
 #include "src/config/ConfigConverter.hpp"
 #include "src/methods/MethodManager.hpp"
 
-void compile_ddnnf(rust::String input, rust::String output) {
+void run(d4::Config config) {
     std::ostringstream out;
+    d4::MethodManager *methodManager = d4::MethodManager::makeMethodManager(config, out);
+    methodManager->run(config);
+    delete methodManager;
+}
 
+void compile_ddnnf(rust::String input, rust::String output) {
     d4::Config config = d4::Config::default_values();
     config.method = "ddnnf-compiler";
     config.input = std::string(input);
     config.dump_ddnnf = std::string(output);
+    run(config);
+}
 
-    d4::MethodManager *methodManager = d4::MethodManager::makeMethodManager(config, out);
-    methodManager->run(config);
-    delete methodManager;
+void compile_ddnnf_proj(rust::String input, rust::String output) {
+    d4::Config config = d4::Config::default_values();
+    config.method = "proj-ddnnf-compiler";
+    config.input = std::string(input);
+    config.dump_ddnnf = std::string(output);
+    run(config);
 }

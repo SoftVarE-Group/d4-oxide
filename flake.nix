@@ -31,9 +31,13 @@
         in
         {
           default = pkgs.mkShell {
+            nativeBuildInputs = [
+              pkgs.cmake
+            ];
+
             buildInputs = [
               pkgs.boost.dev
-              pkgs.pkgsStatic.gmp.dev
+              pkgs.gmp.dev
               d4Pkgs.mt-kahypar.dev
             ];
           };

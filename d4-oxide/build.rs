@@ -40,11 +40,11 @@ fn main() {
         println!("cargo::rustc-link-search=native={root}/lib64");
     }
 
-    if let Ok(include_dir) = env::var("MTKAHYPAR_INCLUDE_DIR") {
+    if let Ok(include_dir) = env::var("MTKAHYPAR_INCLUDE") {
         includes.push(include_dir.clone());
     }
 
-    if let Ok(lib_dir) = env::var("MTKAHYPAR_LIB_DIR") {
+    if let Ok(lib_dir) = env::var("MTKAHYPAR_LIB") {
         println!("cargo::rustc-link-search=native={lib_dir}");
     }
 

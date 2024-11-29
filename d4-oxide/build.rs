@@ -31,6 +31,7 @@ fn main() {
         env::var("DEP_CRYPTOMINISAT5_INCLUDE").unwrap(),
         env::var("DEP_GPMC_INCLUDE").unwrap(),
         env::var("DEP_GMP_INCLUDE_DIR").unwrap(),
+        env::var("DEP_Z_INCLUDE").unwrap(),
     ];
 
     // Collect include and lib dirs of Mt-KaHyPar.

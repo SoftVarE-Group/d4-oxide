@@ -3,6 +3,7 @@ use std::env;
 fn main() {
     let build = cmake::Config::new("d4/3rdParty/GPMC")
         .define("BUILD_SHARED_LIBS", "OFF")
+        .define("ZLIB_ROOT", env::var("DEP_Z_ROOT").unwrap())
         .define("CMAKE_PREFIX_PATH", env::var("DEP_ARJUN_ROOT").unwrap())
         .define("CMAKE_PREFIX_PATH", env::var("DEP_GMP_OUT_DIR").unwrap())
         .cxxflag(format!(

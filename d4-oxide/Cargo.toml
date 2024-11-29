@@ -1,6 +1,6 @@
 [package]
 name = "d4-oxide"
-version = "0.5.3"
+version = "0.5.2"
 description = "A Rust wrapper around d4."
 edition = "2021"
 build = "build.rs"
@@ -20,6 +20,7 @@ d4-glucose-sys = { version = "0.1", path = "../d4-glucose-sys" }
 d4-gpmc-sys = { version = "0.1", path = "../d4-gpmc-sys" }
 d4-sbva-sys = { version = "0.1", path = "../d4-sbva-sys" }
 gmp-mpfr-sys = "1.6"
+libz-sys = "1.1"
 
 [build-dependencies]
 cxx-build = { version = "1.0", features = ["parallel"] }

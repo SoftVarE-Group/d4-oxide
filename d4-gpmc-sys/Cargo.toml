@@ -1,6 +1,6 @@
 [package]
 name = "d4-gpmc-sys"
-version = "0.1.1"
+version = "0.1.2"
 description = "A Rust wrapper around GPMC for d4."
 edition = "2021"
 build = "build.rs"
@@ -15,6 +15,7 @@ repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
 d4-arjun-sys = { version = "0.1", path = "../d4-arjun-sys" }
 d4-cryptominisat-sys = { version = "0.1", path = "../d4-cryptominisat-sys" }
 gmp-mpfr-sys = "1.6"
+libz-sys = "1.1"
 
 [build-dependencies]
 cmake = "0.1"

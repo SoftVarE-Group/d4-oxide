@@ -16,7 +16,6 @@ d4-oxide = "0.5"
 - [Mt-KaHyPar][mtkahypar]
 - [Boost][boost]
 - [GMP][gmp] (with C++ bindings)
-- [zlib][zlib]
 
 These dependencies can be made available in a [Nix][nix] development shell coming with this repository:
 
@@ -36,5 +35,4 @@ Alternatively, to point to the directories containing Mt-KaHyPar, the following 
 [mtkahypar]: https://github.com/kahypar/mt-kahypar
 [boost]: https://boost.org
 [gmp]: https://gmplib.org
-[zlib]: https://zlib.net
 [nix]: https://nixos.org

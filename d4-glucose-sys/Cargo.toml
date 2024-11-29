@@ -1,6 +1,6 @@
 [package]
 name = "d4-glucose-sys"
-version = "0.1.1"
+version = "0.1.2"
 description = "A Rust wrapper around glucose for d4."
 edition = "2021"
 build = "build.rs"
@@ -10,6 +10,9 @@ authors = ["Jan Baudisch <jan.baudisch@uni-ulm.de>"]
 readme = "../README.md"
 homepage = "https://github.com/SoftVarE-Group/d4-oxide"
 repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
+
+[dependencies]
+libz-sys = "1.1"
 
 [build-dependencies]
 cmake = "0.1"

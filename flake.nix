@@ -33,8 +33,8 @@
           default = pkgs.mkShell {
             buildInputs = [
               pkgs.boost.dev
-              pkgs.gmp.dev
-              pkgs.zlib.dev
+              pkgs.pkgsStatic.gmp.dev
+              pkgs.pkgsStatic.zlib.dev
               d4Pkgs.mt-kahypar.dev
             ];
           };

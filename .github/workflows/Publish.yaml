@@ -5,32 +5,17 @@ on:
     tags:
       - '*'
 
-env:
-  CARGO_TERM_COLOR: always
-  CMAKE_GENERATOR: Ninja
-
 jobs:
   Publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
-      - name: Install dependencies
-        run: sudo apt-get install ninja-build libtbb-dev libhwloc-dev libboost-program-options-dev
-      - name: Setup environment
-        run: |
-          echo MTKAHYPAR_DIR=$(mktemp -d) >> $GITHUB_ENV
-      - name: Build Mt-KaHyPar
-        run: |
-          cd $(mktemp -d)
-          git clone --recursive https://github.com/kahypar/mt-kahypar.git .
-          git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
-          cmake -B build -D CMAKE_INSTALL_PREFIX=$MTKAHYPAR_DIR
-          cmake --build build --target mtkahypar
-          cmake --install build
+      - name: Nix
+        uses: DeterminateSystems/nix-installer-action@v16
       - name: Publish
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
-        run: cargo publish -p d4-oxide
+        run: nix develop --command cargo publish -p d4-oxide

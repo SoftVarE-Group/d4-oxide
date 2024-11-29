@@ -8,7 +8,7 @@ Add it as a dependency to your Cargo.toml:
 
 ```toml
 [dependencies]
-d4-oxide = "0.2"
+d4-oxide = "0.5"
 ```
 
 ## Requirements

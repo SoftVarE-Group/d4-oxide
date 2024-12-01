@@ -1,6 +1,6 @@
 [package]
 name = "d4-arjun-sys"
-version = "0.1.1"
+version = "0.1.2"
 description = "A Rust wrapper around Arjun for d4."
 edition = "2021"
 build = "build.rs"
@@ -13,6 +13,7 @@ repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
 
 [dependencies]
 d4-cryptominisat-sys = { version = "0.1", path = "../d4-cryptominisat-sys" }
+d4-sbva-sys = { version = "0.1", path = "../d4-sbva-sys" }
 gmp-mpfr-sys = "1.6"
 
 [build-dependencies]

@@ -8,6 +8,7 @@ fn main() {
             "CMAKE_PREFIX_PATH",
             env::var("DEP_CRYPTOMINISAT5_ROOT").unwrap(),
         )
+        .define("CMAKE_PREFIX_PATH", env::var("DEP_SBVA_ROOT").unwrap())
         .build();
 
     println!("cargo::metadata=INCLUDE={}/include", build.display());

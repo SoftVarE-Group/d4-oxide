@@ -4,7 +4,8 @@ fn main() {
         .define("BINARY", "OFF")
         .build();
 
-    println!("cargo:include={}/include", build.display());
+    println!("cargo::metadata=INCLUDE={}/include", build.display());
+    println!("cargo::metadata=CMAKE={}/lib/cmake/sbva", build.display());
     println!("cargo::rustc-link-search=native={}/lib", build.display());
     println!("cargo::rustc-link-search=native={}/lib64", build.display());
 }

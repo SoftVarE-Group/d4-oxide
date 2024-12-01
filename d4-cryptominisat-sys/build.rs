@@ -33,6 +33,10 @@ fn main() {
         .build();
 
     println!("cargo::metadata=INCLUDE={}/include", build.display());
+    println!(
+        "cargo::metadata=CMAKE={}/lib/cmake/cryptominisat5",
+        build.display()
+    );
     println!("cargo::rustc-link-search=native={}/lib", build.display());
     println!("cargo::rustc-link-search=native={}/lib64", build.display());
 }

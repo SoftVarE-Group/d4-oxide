@@ -30,6 +30,7 @@ fn main() {
             "-isystem {}",
             env::var("DEP_CADICAL_INCLUDE").unwrap()
         ))
+        .cxxflag(format!("-isystem {}", env::var("DEP_GMP_INCLUDE").unwrap()))
         .build();
 
     println!("cargo::metadata=INCLUDE={}/include", build.display());

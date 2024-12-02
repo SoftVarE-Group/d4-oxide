@@ -14,6 +14,7 @@ repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
 [dependencies]
 d4-cadiback-sys = { version = "0.1", path = "../d4-cadiback-sys" }
 d4-cadical-sys = { version = "0.1", path = "../d4-cadical-sys" }
+d4-gmp-sys = { version = "0.1", path = "../d4-gmp-sys" }
 
 [build-dependencies]
 cmake = "0.1"

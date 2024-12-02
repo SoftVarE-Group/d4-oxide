@@ -1,6 +1,6 @@
 [package]
 name = "d4-oxide"
-version = "0.5.2"
+version = "0.5.3"
 description = "A Rust wrapper around d4."
 edition = "2021"
 build = "build.rs"
@@ -17,9 +17,10 @@ d4-cadiback-sys = { version = "0.1", path = "../d4-cadiback-sys" }
 d4-cadical-sys = { version = "0.1", path = "../d4-cadical-sys" }
 d4-cryptominisat-sys = { version = "0.1", path = "../d4-cryptominisat-sys" }
 d4-glucose-sys = { version = "0.1", path = "../d4-glucose-sys" }
+d4-gmp-sys = { version = "0.1", path = "../d4-gmp-sys" }
 d4-gpmc-sys = { version = "0.1", path = "../d4-gpmc-sys" }
+d4-mpfr-sys = { version = "0.1", path = "../d4-mpfr-sys" }
 d4-sbva-sys = { version = "0.1", path = "../d4-sbva-sys" }
-gmp-mpfr-sys = "1.6"
 libz-sys = "1.1"
 
 [build-dependencies]

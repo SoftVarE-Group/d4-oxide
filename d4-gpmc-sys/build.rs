@@ -5,7 +5,6 @@ fn main() {
         .define("BUILD_SHARED_LIBS", "OFF")
         .define("ZLIB_ROOT", env::var("DEP_Z_ROOT").unwrap())
         .define("arjun_DIR", env::var("DEP_ARJUN_CMAKE").unwrap())
-        .define("CMAKE_PREFIX_PATH", env::var("DEP_GMP_OUT_DIR").unwrap())
         .cxxflag(format!(
             "-isystem {}",
             env::var("DEP_ARJUN_INCLUDE").unwrap()
@@ -14,9 +13,10 @@ fn main() {
             "-isystem {}",
             env::var("DEP_CRYPTOMINISAT5_INCLUDE").unwrap()
         ))
+        .cxxflag(format!("-isystem {}", env::var("DEP_GMP_INCLUDE").unwrap()))
         .cxxflag(format!(
             "-isystem {}",
-            env::var("DEP_GMP_INCLUDE_DIR").unwrap()
+            env::var("DEP_MPFR_INCLUDE").unwrap()
         ))
         .build();
 

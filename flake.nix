@@ -37,7 +37,6 @@
 
             buildInputs = [
               pkgs.boost.dev
-              pkgs.gmp.dev
               d4Pkgs.mt-kahypar.dev
             ];
           };

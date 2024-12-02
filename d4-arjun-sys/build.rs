@@ -9,6 +9,7 @@ fn main() {
             env::var("DEP_CRYPTOMINISAT5_CMAKE").unwrap(),
         )
         .define("sbva_DIR", env::var("DEP_SBVA_CMAKE").unwrap())
+        .cxxflag(format!("-isystem {}", env::var("DEP_GMP_INCLUDE").unwrap()))
         .build();
 
     println!("cargo::metadata=INCLUDE={}/include", build.display());

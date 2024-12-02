@@ -6,6 +6,7 @@ fn main() {
         .define("BINARY", "OFF")
         .define("CMAKE_PREFIX_PATH", env::var("DEP_CADIBACK_ROOT").unwrap())
         .define("CMAKE_PREFIX_PATH", env::var("DEP_CADICAL_ROOT").unwrap())
+        .define("GMP_ROOT", env::var("DEP_GMP_ROOT").unwrap())
         .env(
             "CADIBACK_LIB_DIR",
             format!("{}/lib", env::var("DEP_CADIBACK_ROOT").unwrap()),
@@ -30,7 +31,6 @@ fn main() {
             "-isystem {}",
             env::var("DEP_CADICAL_INCLUDE").unwrap()
         ))
-        .cxxflag(format!("-isystem {}", env::var("DEP_GMP_INCLUDE").unwrap()))
         .build();
 
     println!("cargo::metadata=INCLUDE={}/include", build.display());

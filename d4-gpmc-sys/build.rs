@@ -13,6 +13,10 @@ fn main() {
             "-isystem {}",
             env::var("DEP_CRYPTOMINISAT5_INCLUDE").unwrap()
         ))
+        .cxxflag(format!(
+            "-isystem {}",
+            env::var("DEP_MPFR_INCLUDE").unwrap()
+        ))
         .build();
 
     println!("cargo::metadata=INCLUDE={}/include", build.display());

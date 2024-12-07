@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     d4 = {
-      url = "github:SoftVarE-Group/d4v2/mt-kahypar";
+      url = "github:SoftVarE-Group/d4v2/2.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

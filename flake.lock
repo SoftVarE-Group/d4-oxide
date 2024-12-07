@@ -7,27 +7,27 @@
         ]
       },
       "locked": {
-        "lastModified": 1732816696,
-        "narHash": "sha256-0NpWmv++ghW4aWMu2mC50k1068D1p5fDgXKD1i8GqUI=",
+        "lastModified": 1733224044,
+        "narHash": "sha256-EgjXDSIGgn7XDmM/6Uc/bSEYZCvrmRcpDO+xgf9q+xo=",
         "owner": "SoftVarE-Group",
         "repo": "d4v2",
-        "rev": "63be2a89e3df3a174eeee7dbab6af3ff3d783704",
+        "rev": "95f3fb861b71b79bc48a1442b7f13020f475dae0",
         "type": "github"
       },
       "original": {
         "owner": "SoftVarE-Group",
-        "ref": "mt-kahypar",
+        "ref": "2.0.0",
         "repo": "d4v2",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1732350895,
-        "narHash": "sha256-GcOQbOgmwlsRhpLGSwZJwLbo3pu9ochMETuRSS1xpz4=",
+        "lastModified": 1733412085,
+        "narHash": "sha256-FillH0qdWDt/nlO6ED7h4cmN+G9uXwGjwmCnHs0QVYM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0c582677378f2d9ffcb01490af2f2c678dcb29d3",
+        "rev": "4dc2fc4e62dbf62b84132fe526356fbac7b03541",
         "type": "github"
       },
       "original": {

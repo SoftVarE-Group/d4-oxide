@@ -4,8 +4,6 @@ fn main() {
     let build = cmake::Config::new("cryptominisat")
         .define("BUILD_SHARED_LIBS", "OFF")
         .define("BINARY", "OFF")
-        .define("CMAKE_PREFIX_PATH", env::var("DEP_CADIBACK_ROOT").unwrap())
-        .define("CMAKE_PREFIX_PATH", env::var("DEP_CADICAL_ROOT").unwrap())
         .env(
             "CADIBACK_LIB_DIR",
             format!("{}/lib", env::var("DEP_CADIBACK_ROOT").unwrap()),

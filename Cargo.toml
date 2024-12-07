@@ -5,7 +5,9 @@ members = [
     "d4-cadical-sys",
     "d4-cryptominisat-sys",
     "d4-glucose-sys",
+    "d4-gmp-sys",
     "d4-gpmc-sys",
+    "d4-mpfr-sys",
     "d4-oxide",
     "d4-sbva-sys",
 ]

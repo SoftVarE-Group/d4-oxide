@@ -3,15 +3,6 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    // Find GMP as the C++ bindings are not built by the corresponding crate yet.
-    let gmp_library = pkg_config::Config::new()
-        .probe("gmp")
-        .expect("Failed to find GMP library.");
-
-    for path in gmp_library.link_paths {
-        println!("cargo:rustc-link-search={}", path.display());
-    }
-
     // Find d4 sources to build.
     let d4_sources: Vec<PathBuf> = glob("d4/src/**/*.cpp")
         .expect("Failed to create glob pattern for d4 sources.")
@@ -29,8 +20,9 @@ fn main() {
         "d4/src".to_string(),
         env::var("DEP_ARJUN_INCLUDE").unwrap(),
         env::var("DEP_CRYPTOMINISAT5_INCLUDE").unwrap(),
+        env::var("DEP_GMP_INCLUDE").unwrap(),
         env::var("DEP_GPMC_INCLUDE").unwrap(),
-        env::var("DEP_GMP_INCLUDE_DIR").unwrap(),
+        env::var("DEP_MPFR_INCLUDE").unwrap(),
         env::var("DEP_Z_INCLUDE").unwrap(),
     ];
 
@@ -68,6 +60,7 @@ fn main() {
     println!("cargo::rustc-link-lib=static=cadical");
     println!("cargo::rustc-link-lib=static=cryptominisat5");
     println!("cargo::rustc-link-lib=static=glucose");
+    println!("cargo::rustc-link-lib=static=gmp");
     println!("cargo::rustc-link-lib=static=gmpxx");
     println!("cargo::rustc-link-lib=static=gpmc");
     println!("cargo::rustc-link-lib=static=sbva");

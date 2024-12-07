@@ -3,6 +3,7 @@ use std::env;
 fn main() {
     let build = cmake::Config::new("arjun")
         .define("BUILD_SHARED_LIBS", "OFF")
+        .define("BINARY", "OFF")
         .define(
             "cryptominisat5_DIR",
             env::var("DEP_CRYPTOMINISAT5_CMAKE").unwrap(),

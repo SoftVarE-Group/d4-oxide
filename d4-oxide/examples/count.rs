@@ -1,15 +1,11 @@
 use clap::Parser;
-use d4_oxide::{compile_ddnnf, compile_ddnnf_proj};
+use d4_oxide::{count, count_proj};
 
 #[derive(Parser, Debug)]
 struct Args {
     /// Input file to read CNF from.
     #[arg(short, long)]
     input: String,
-
-    /// Output file to write d-DNNF to.
-    #[arg(short, long)]
-    output: String,
 
     /// Whether to use projected compilation.
     #[arg(short, long)]
@@ -19,8 +15,8 @@ struct Args {
 fn main() {
     let args = Args::parse();
     if args.projected {
-        compile_ddnnf_proj(args.input, args.output);
+        println!("{}", count_proj(args.input));
     } else {
-        compile_ddnnf(args.input, args.output);
+        println!("{}", count(args.input));
     }
 }

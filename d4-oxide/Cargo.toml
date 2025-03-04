@@ -11,7 +11,7 @@ homepage = "https://github.com/SoftVarE-Group/d4-oxide"
 repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
 
 [dependencies]
-cxx = { version = "1.0", features = ["c++20"] }
+cxx = { version = "1", features = ["c++20"] }
 d4-arjun-sys = { version = "0.1", path = "../d4-arjun-sys" }
 d4-cadiback-sys = { version = "0.1", path = "../d4-cadiback-sys" }
 d4-cadical-sys = { version = "0.1", path = "../d4-cadical-sys" }
@@ -21,12 +21,13 @@ d4-gmp-sys = { version = "0.1", path = "../d4-gmp-sys" }
 d4-gpmc-sys = { version = "0.1", path = "../d4-gpmc-sys" }
 d4-mpfr-sys = { version = "0.1", path = "../d4-mpfr-sys" }
 d4-sbva-sys = { version = "0.1", path = "../d4-sbva-sys" }
-libz-sys = "1.1"
+libz-sys = "1"
+num-bigint = "0.4"
 
 [build-dependencies]
-cxx-build = { version = "1.0", features = ["parallel"] }
+cxx-build = { version = "1", features = ["parallel"] }
 glob = "0.3"
 pkg-config = "0.3"
 
 [dev-dependencies]
-clap = { version = "4.5", features = ["derive"] }
+clap = { version = "4", features = ["derive"] }

@@ -51,6 +51,9 @@ fn main() {
         .define("D4_PREPORC_SOLVER", "minisat")
         .compile("d4");
 
+    println!("cargo::rerun-if-changed=include");
+    println!("cargo::rerun-if-changed=src/Adapter.cc");
+
     // Link Mt-KaHyPar.
     println!("cargo::rustc-link-lib=dylib=mtkahypar");
 

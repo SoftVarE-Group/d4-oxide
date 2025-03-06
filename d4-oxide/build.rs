@@ -43,7 +43,7 @@ fn main() {
 
     // Build d4.
     cxx_build::bridge("src/lib.rs")
-        .std("c++20")
+        .std("c++17")
         .includes(includes)
         .file("src/Adapter.cc")
         .files(d4_sources)

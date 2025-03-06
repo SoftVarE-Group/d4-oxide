@@ -11,7 +11,7 @@ homepage = "https://github.com/SoftVarE-Group/d4-oxide"
 repository = "https://github.com/SoftVarE-Group/d4-oxide.git"
 
 [dependencies]
-cxx = { version = "1", features = ["c++20"] }
+cxx = { version = "1", features = ["c++17"] }
 d4-arjun-sys = { version = "0.1", path = "../d4-arjun-sys" }
 d4-cadiback-sys = { version = "0.1", path = "../d4-cadiback-sys" }
 d4-cadical-sys = { version = "0.1", path = "../d4-cadical-sys" }

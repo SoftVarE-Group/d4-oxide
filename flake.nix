@@ -2,9 +2,9 @@
   description = "Development environment for d4-oxide";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     d4 = {
-      url = "github:SoftVarE-Group/d4v2/2.0.0";
+      url = "github:SoftVarE-Group/d4v2/2.3.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

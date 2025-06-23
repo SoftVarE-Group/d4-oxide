@@ -1,6 +1,3 @@
-[submodule "d4"]
-	path = d4
-	url = https://github.com/SoftVarE-Group/d4v2.git
 [submodule "d4-cadical-sys/cadical"]
 	path = d4-cadical-sys/cadical
 	url = https://github.com/uulm-janbaudisch/cadical.git
@@ -16,3 +13,9 @@
 [submodule "d4-arjun-sys/arjun"]
 	path = d4-arjun-sys/arjun
 	url = https://github.com/uulm-janbaudisch/arjun.git
+[submodule "d4-oxide/d4"]
+	path = d4-oxide/d4
+	url = https://github.com/SoftVarE-Group/d4v2.git
+[submodule "d4-gpmc-sys/d4"]
+	path = d4-gpmc-sys/d4
+	url = https://github.com/SoftVarE-Group/d4v2.git

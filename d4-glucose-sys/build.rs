@@ -1,7 +1,7 @@
 use std::env;
 
 fn main() {
-    let build = cmake::Config::new("glucose")
+    let build = cmake::Config::new("d4/3rdParty/glucose-3.0")
         .define("BUILD_SHARED_LIBS", "OFF")
         .define("ZLIB_ROOT", env::var("DEP_Z_ROOT").unwrap())
         .build();

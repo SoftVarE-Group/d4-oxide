@@ -19,3 +19,6 @@
 [submodule "d4-gpmc-sys/d4"]
 	path = d4-gpmc-sys/d4
 	url = https://github.com/SoftVarE-Group/d4v2.git
+[submodule "d4-glucose-sys/d4"]
+	path = d4-glucose-sys/d4
+	url = https://github.com/SoftVarE-Group/d4v2.git

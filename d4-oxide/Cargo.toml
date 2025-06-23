@@ -1,6 +1,6 @@
 [package]
 name = "d4-oxide"
-version = "0.7.3"
+version = "0.7.4"
 description = "A Rust wrapper around d4."
 edition = "2021"
 build = "build.rs"

@@ -11,6 +11,7 @@
 #include "src/methods/DpllStyleMethod.hpp"
 #include "src/methods/MethodManager.hpp"
 #include "src/methods/ProjMCMethod.hpp"
+#include "src/partitioner/PartitionerKahyparMT.hpp"
 
 namespace mpz = boost::multiprecision;
 
@@ -20,6 +21,7 @@ void compile_ddnnf(rust::String input, rust::String output) {
     config.method = "ddnnf-compiler";
     config.input = std::string(input);
     config.dump_ddnnf = std::string(output);
+    d4::PartitionerKahyparMT::initPartitioner(config);
     d4::MethodManager *methodManager = d4::MethodManager::makeMethodManager(config, out);
     methodManager->run(config);
     delete methodManager;
@@ -31,6 +33,7 @@ void compile_ddnnf_proj(rust::String input, rust::String output) {
     config.method = "proj-ddnnf-compiler";
     config.input = std::string(input);
     config.dump_ddnnf = std::string(output);
+    d4::PartitionerKahyparMT::initPartitioner(config);
     d4::MethodManager *methodManager = d4::MethodManager::makeMethodManager(config, out);
     methodManager->run(config);
     delete methodManager;
@@ -42,6 +45,7 @@ rust::Vec<unsigned char> count(rust::String input) {
   config.method = "counting";
   config.input = std::string(input);
 
+  d4::PartitionerKahyparMT::initPartitioner(config);
   d4::ProblemManager *initProblem = d4::ProblemManager::makeProblemManager(config, out);
   assert(initProblem);
 
@@ -65,6 +69,7 @@ rust::Vec<unsigned char> count_proj(rust::String input) {
   config.method = "projMC";
   config.input = std::string(input);
 
+  d4::PartitionerKahyparMT::initPartitioner(config);
   d4::ProblemManager *initProblem = d4::ProblemManager::makeProblemManager(config, out);
   assert(initProblem);
 
